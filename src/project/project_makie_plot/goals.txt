@@ -1,0 +1,6 @@
+This is a hello world test for:
+backend: julia simulation bridging to python/FastAPI
+frontend: react 
+
+I am going to make a plot using makie.jl
+I will then use python/react to publish the plot on a website.

@@ -1,0 +1,44 @@
+{
+  "name": "project_makie_plot",
+  "version": "1.0.0",
+  "description": "Publish a WGLMakie plot on my website. This is a basic project for learning the basics of full stack development. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:scss": "sass --style=compressed src/scss:dist",
+    "css:autoprefixer": "postcss -u autoprefixer -r dist/*.css",
+    "css:lint": "stylelint src/scss/*.scss  --custom-syntax postcss-scss",
+    "build:css": "npm run css:lint && npm run css:scss && npm run css:autoprefixer",
+    "watch:css": "onchange \"src/scss\" -- npm run build:css",
+    "serve": "browser-sync start --server \"dist\" --files \"dist\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kyle-Hawkins/personal_site.git"
+  },
+  "keywords": [
+    "Makie",
+    "Julia",
+    "React",
+    "Python",
+    "Data",
+    "Visualization"
+  ],
+  "author": "Kyle Hawkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kyle-Hawkins/personal_site/issues"
+  },
+  "homepage": "https://github.com/Kyle-Hawkins/personal_site#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "browser-sync": "^3.0.4",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^11.0.1",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.93.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard-scss": "^16.0.0"
+  }
+}
