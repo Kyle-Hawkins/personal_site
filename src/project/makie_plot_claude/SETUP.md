@@ -23,7 +23,7 @@ conda env create -f environment.yml
 conda activate glmakie-demo
 
 # Install Julia packages
-julia --project=. -e 'using Pkg; Pkg.instantiate()'
+julia --project=julia-env -e 'using Pkg; Pkg.instantiate()'
 
 # Start the server
 cd app
@@ -87,7 +87,7 @@ curl http://localhost:8000/plots
 **Problem:** Backend says Julia not initialized
 ```bash
 # Solution: Manually test Julia
-julia --project=backend -e 'using GLMakie; println("GLMakie loaded!")'
+julia --project=julia-env -e 'using GLMakie; println("GLMakie loaded!")'
 ```
 
 **Problem:** Port 8000 already in use

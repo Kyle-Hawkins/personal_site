@@ -22,11 +22,13 @@ makie_plot_claude/
 │   ├── app/
 │   │   ├── __init__.py
 │   │   └── main.py              # FastAPI application
+│   ├── julia-env/
+│   │   ├── Project.toml         # Julia dependencies
+│   │   └── Manifest.toml        # Locked Julia dependencies
 │   ├── julia-src/
 │   │   └── generate_plot.jl     # Julia plotting functions
 │   ├── outputs/                 # Generated plot images (git-ignored)
 │   ├── environment.yml          # Conda environment
-│   ├── Project.toml             # Julia dependencies
 │   └── .gitignore
 └── frontend/
     ├── src/
@@ -54,8 +56,8 @@ makie_plot_claude/
 
 2. **Install Julia packages:**
    ```bash
-   # Set Julia project to use the Project.toml in backend/
-   julia --project=. -e 'using Pkg; Pkg.instantiate()'
+   # Set Julia project to use the Project.toml in julia-env/
+   julia --project=julia-env -e 'using Pkg; Pkg.instantiate()'
    ```
 
 3. **Test Julia script (optional):**
@@ -195,8 +197,8 @@ Delete a specific plot.
 
 ### Julia Initialization Fails
 - Ensure Julia 1.10 is installed: `julia --version`
-- Check if GLMakie is installed: `julia -e 'using GLMakie'`
-- Try reinstalling Julia packages: `julia --project=. -e 'using Pkg; Pkg.update()'`
+- Check if GLMakie is installed: `julia --project=julia-env -e 'using GLMakie'`
+- Try reinstalling Julia packages: `julia --project=julia-env -e 'using Pkg; Pkg.update()'`
 
 ### Backend Connection Errors
 - Verify the backend is running: `curl http://localhost:8000`
