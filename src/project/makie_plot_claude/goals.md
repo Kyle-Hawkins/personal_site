@@ -1,0 +1,53 @@
+# GLMakie Plot Generator
+
+**Julia + FastAPI + React Pipeline**
+
+## Goals
+
+1. **Demonstrate a complete pipeline** for taking Julia code (GLMakie plots) and publishing them on the website using Python (FastAPI) and React
+
+2. **Test case:** Create beautiful 3D surface plots and 2D line plots using GLMakie
+
+3. **Backend:** FastAPI server that executes Julia code via juliacall and serves generated plot images
+
+4. **Frontend:** Modern React app with Vite that allows users to:
+   - Generate plots on demand
+   - View plot history
+   - Delete unwanted plots
+   - Monitor backend/Julia status
+
+5. **Establish a reusable pattern** for future Julia-based projects
+
+## Technical Stack
+
+- **Julia 1.10** + GLMakie (plot generation)
+- **Python 3.12** + FastAPI (REST API)
+- **juliacall 0.9.20** (Python-Julia bridge)
+- **React 18** + Vite (frontend)
+- **Conda** (backend environment management)
+- **npm** (frontend package management)
+
+## Key Features
+
+✅ Julia plot generation (3D surface, 2D line plots)
+✅ FastAPI REST endpoints for plot operations
+✅ React frontend with modern UI
+✅ Real-time backend status monitoring
+✅ Plot history with thumbnails
+✅ CRUD operations on plots
+✅ Responsive design
+✅ Error handling and loading states
+
+## Future Enhancements
+
+- [ ] Add more plot types (heatmaps, contours, animations)
+- [ ] Allow plot parameter customization from frontend
+- [ ] Export plots in multiple formats (SVG, PDF)
+- [ ] Add plot comparison view
+- [ ] Implement caching and optimization
+- [ ] WebSocket support for real-time updates
+- [ ] User authentication and plot saving
+
+## Status
+
+**Setup complete, ready for testing and development** ✅
