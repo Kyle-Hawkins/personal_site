@@ -8,5 +8,4 @@ dependencies:
   - pip:
       - fastapi[all]==0.111.0
       - uvicorn[standard]
-      - juliacall==0.9.20
       - python-dotenv

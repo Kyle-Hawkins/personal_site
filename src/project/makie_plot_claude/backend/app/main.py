@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import os
+import subprocess
 from pathlib import Path
 from datetime import datetime
 
@@ -28,45 +29,47 @@ class PlotRequest(BaseModel):
     plot_type: str = "surface"  # "surface" or "line"
 
 
-# Initialize Julia once at startup
+# Julia initialization (using subprocess approach to avoid OpenSSL conflicts)
 _julia_initialized = False
-_jl = None
 
 
-def initialize_julia():
-    """Initialize Julia runtime and load the plotting module."""
-    global _julia_initialized, _jl
+def check_julia():
+    """Check if Julia can run and load GLMakie."""
+    global _julia_initialized
 
     if _julia_initialized:
-        return _jl
+        return True
 
     try:
-        from juliacall import Main as jl
+        # Test if Julia can load GLMakie
+        result = subprocess.run(
+            ["julia", f"--project={BACKEND_DIR / 'julia-env'}",
+             "-e", "using GLMakie; println(\"OK\")"],
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
 
-        # Add the julia-src directory to Julia's load path
-        jl.seval(f'push!(LOAD_PATH, "{JULIA_SRC_DIR}")')
-
-        # Load GLMakie and our plotting functions
-        plot_script = JULIA_SRC_DIR / "generate_plot.jl"
-        jl.seval(f'include("{plot_script}")')
-
-        _julia_initialized = True
-        _jl = jl
-        print("Julia initialized successfully!")
-        return jl
+        if result.returncode == 0 and "OK" in result.stdout:
+            _julia_initialized = True
+            print("Julia initialized successfully!")
+            return True
+        else:
+            print(f"Julia check failed: {result.stderr}")
+            return False
 
     except Exception as e:
-        print(f"Failed to initialize Julia: {e}")
-        raise
+        print(f"Failed to check Julia: {e}")
+        return False
 
 
 @app.on_event("startup")
 async def startup_event():
-    """Initialize Julia when the app starts."""
+    """Check Julia availability when the app starts."""
     try:
-        initialize_julia()
+        check_julia()
     except Exception as e:
-        print(f"Warning: Julia initialization failed: {e}")
+        print(f"Warning: Julia check failed: {e}")
 
 
 @app.get("/")
@@ -91,23 +94,49 @@ async def generate_plot(request: PlotRequest):
         JSON with the path to the generated plot
     """
     try:
-        # Ensure Julia is initialized
-        jl = initialize_julia()
+        # Ensure Julia is available
+        if not check_julia():
+            raise HTTPException(
+                status_code=503,
+                detail="Julia is not available"
+            )
 
         # Generate unique filename with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"plot_{request.plot_type}_{timestamp}.png"
         output_path = OUTPUTS_DIR / filename
 
-        # Call the appropriate Julia function
+        # Prepare Julia command based on plot type
         if request.plot_type == "surface":
-            jl.generate_surface_plot(str(output_path))
+            function_call = f'generate_surface_plot("{output_path}")'
         elif request.plot_type == "line":
-            jl.generate_line_plot(str(output_path))
+            function_call = f'generate_line_plot("{output_path}")'
         else:
             raise HTTPException(
                 status_code=400,
                 detail=f"Invalid plot type: {request.plot_type}. Use 'surface' or 'line'."
+            )
+
+        # Call Julia as subprocess
+        julia_code = f'include("{JULIA_SRC_DIR / "generate_plot.jl"}"); {function_call}'
+        result = subprocess.run(
+            ["julia", f"--project={BACKEND_DIR / 'julia-env'}", "-e", julia_code],
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+
+        if result.returncode != 0:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Julia execution failed: {result.stderr}"
+            )
+
+        # Verify the file was created
+        if not output_path.exists():
+            raise HTTPException(
+                status_code=500,
+                detail="Plot file was not created"
             )
 
         return {
@@ -117,6 +146,8 @@ async def generate_plot(request: PlotRequest):
             "plot_type": request.plot_type
         }
 
+    except subprocess.TimeoutExpired:
+        raise HTTPException(status_code=504, detail="Plot generation timed out")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Plot generation failed: {str(e)}")
 

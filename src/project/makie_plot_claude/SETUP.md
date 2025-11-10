@@ -8,6 +8,23 @@ Follow these steps to get the GLMakie plot generator running:
 - Node.js (v18 or higher) and npm
 - Git
 
+## Quick Start (Recommended)
+
+After completing the initial setup below, you can use these convenience scripts:
+
+```bash
+# From the project root directory
+cd src/project/makie_plot_claude
+
+# Start both servers in the background
+./start_all.sh
+
+# Stop both servers
+./backend/stop_server.sh
+```
+
+The `start_all.sh` script will start both backend and frontend servers in the background and show you their status.
+
 ## Step-by-Step Setup
 
 ### 1. Backend Setup (Terminal 1)
@@ -25,10 +42,18 @@ conda activate glmakie-demo
 # Install Julia packages
 julia --project=julia-env -e 'using Pkg; Pkg.instantiate()'
 
-# Start the server
-cd app
-python main.py
+# Precompile GLMakie (takes 2-3 minutes on first run)
+julia --project=julia-env -e 'using GLMakie; println("GLMakie ready!")'
+
+# Start the server (Option 1: using startup script)
+./start_server.sh
+
+# OR start manually (Option 2)
+# cd app
+# python main.py
 ```
+
+**Note:** The first time you load GLMakie, it needs to precompile which takes 2-3 minutes. Subsequent runs will be much faster.
 
 Keep this terminal running. The backend should now be available at http://localhost:8000
 
@@ -41,8 +66,11 @@ cd src/project/makie_plot_claude/frontend
 # Install npm packages
 npm install
 
-# Start the development server
-npm run dev
+# Start the development server (Option 1: using startup script)
+./start_frontend.sh
+
+# OR start manually (Option 2)
+# npm run dev
 ```
 
 Keep this terminal running. The frontend should now be available at http://localhost:3000
@@ -84,10 +112,22 @@ curl http://localhost:8000/plots
 
 ## Common Issues
 
-**Problem:** Backend says Julia not initialized
+**Problem:** Backend says Julia not initialized or OpenSSL version conflict
 ```bash
-# Solution: Manually test Julia
-julia --project=julia-env -e 'using GLMakie; println("GLMakie loaded!")'
+# Solution 1: GLMakie takes 2-3 minutes to precompile on first run
+# Just wait patiently for it to finish
+
+# Solution 2: Manually precompile GLMakie before starting the backend
+cd backend
+julia --project=julia-env -e 'using GLMakie; println("GLMakie loaded successfully")'
+
+# This can take several minutes on first run but subsequent runs will be fast
+```
+
+**Problem:** OpenSSL library version conflicts
+```bash
+# This has been fixed - the backend now uses subprocess to call Julia
+# Julia runs independently with its own libraries, avoiding conflicts with conda's OpenSSL
 ```
 
 **Problem:** Port 8000 already in use
@@ -104,6 +144,14 @@ julia --project=julia-env -e 'using GLMakie; println("GLMakie loaded!")'
 - Check browser console for error messages
 
 ## Stopping the Servers
+
+**Option 1: Use the stop script (recommended)**
+```bash
+cd src/project/makie_plot_claude/backend
+./stop_server.sh
+```
+
+**Option 2: Manual stop**
 
 **Backend (Terminal 1):**
 - Press `Ctrl+C`
