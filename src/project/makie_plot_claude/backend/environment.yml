@@ -1,0 +1,11 @@
+name: glmakie-demo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - julia=1.10
+  - pip
+  - pip:
+      - fastapi[all]==0.111.0
+      - uvicorn[standard]
+      - python-dotenv

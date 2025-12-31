@@ -1,0 +1,6 @@
+This code will do simulations of a fermentation reaction from sugar to alcohol to vinegar
+The results will be distributed using a FastAPI/React pipline.
+This example was chosen since it is a system I understand well
+This system is complex but can be represented at many levels
+The hope is to build sub-projects within this context
+Ex. Parameterized metabolic models, FBA models, Media transfer, population balance, etc. 

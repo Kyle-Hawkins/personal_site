@@ -1,0 +1,15 @@
+{
+  "customSyntax": "postcss-scss",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "block-no-empty": true,
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "scss/dollar-variable-colon-space-before": null,   
+    "scss/load-no-partial-leading-underscore": null,  
+    "scss/load-partial-extension": null      
+  }
+}
