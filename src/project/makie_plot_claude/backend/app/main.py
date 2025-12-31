@@ -7,7 +7,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 
-app = FastAPI(title="GLMakie Plot Generator")
+app = FastAPI(title="WGLMakie Plot Generator")
 
 # Enable CORS for React frontend
 app.add_middleware(
@@ -34,17 +34,17 @@ _julia_initialized = False
 
 
 def check_julia():
-    """Check if Julia can run and load GLMakie."""
+    """Check if Julia can run and load WGLMakie."""
     global _julia_initialized
 
     if _julia_initialized:
         return True
 
     try:
-        # Test if Julia can load GLMakie
+        # Test if Julia can load WGLMakie and Bonito
         result = subprocess.run(
             ["julia", f"--project={BACKEND_DIR / 'julia-env'}",
-             "-e", "using GLMakie; println(\"OK\")"],
+             "-e", "using WGLMakie, Bonito; println(\"OK\")"],
             capture_output=True,
             text=True,
             timeout=30
@@ -77,7 +77,7 @@ async def root():
     """Health check endpoint."""
     return {
         "status": "running",
-        "service": "GLMakie Plot Generator",
+        "service": "WGLMakie Plot Generator",
         "julia_initialized": _julia_initialized
     }
 
@@ -85,13 +85,13 @@ async def root():
 @app.post("/generate-plot")
 async def generate_plot(request: PlotRequest):
     """
-    Generate a plot using Julia GLMakie.
+    Generate an interactive plot using Julia WGLMakie.
 
     Args:
         request: PlotRequest containing the plot type
 
     Returns:
-        JSON with the path to the generated plot
+        JSON with the path to the generated interactive HTML plot
     """
     try:
         # Ensure Julia is available
@@ -103,7 +103,7 @@ async def generate_plot(request: PlotRequest):
 
         # Generate unique filename with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"plot_{request.plot_type}_{timestamp}.png"
+        filename = f"plot_{request.plot_type}_{timestamp}.html"
         output_path = OUTPUTS_DIR / filename
 
         # Prepare Julia command based on plot type
@@ -155,13 +155,13 @@ async def generate_plot(request: PlotRequest):
 @app.get("/plots/{filename}")
 async def get_plot(filename: str):
     """
-    Retrieve a generated plot image.
+    Retrieve a generated plot HTML file.
 
     Args:
         filename: Name of the plot file
 
     Returns:
-        The PNG image file
+        The interactive HTML plot file
     """
     file_path = OUTPUTS_DIR / filename
 
@@ -170,7 +170,7 @@ async def get_plot(filename: str):
 
     return FileResponse(
         file_path,
-        media_type="image/png",
+        media_type="text/html",
         headers={"Content-Disposition": f"inline; filename={filename}"}
     )
 
@@ -183,7 +183,7 @@ async def list_plots():
     Returns:
         List of plot filenames
     """
-    plots = [f.name for f in OUTPUTS_DIR.glob("*.png")]
+    plots = [f.name for f in OUTPUTS_DIR.glob("*.html")]
     plots.sort(reverse=True)  # Most recent first
 
     return {

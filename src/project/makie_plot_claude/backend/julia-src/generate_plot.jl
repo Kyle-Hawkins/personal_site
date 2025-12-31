@@ -1,8 +1,12 @@
-using GLMakie
+using WGLMakie
+using Bonito
+
+# Activate WGLMakie backend
+WGLMakie.activate!()
 
 """
-Generate a beautiful 3D surface plot using GLMakie.
-Saves the plot as a PNG image to the specified output path.
+Generate a beautiful 3D surface plot using WGLMakie.
+Saves the plot as an interactive HTML file to the specified output path.
 """
 function generate_surface_plot(output_path::String)
     # Create data for a parametric surface
@@ -13,7 +17,7 @@ function generate_surface_plot(output_path::String)
     zs = [sinc(sqrt(x^2 + y^2)) * cos(x) * sin(y) for x in xs, y in ys]
 
     # Create the figure with custom styling
-    fig = Figure(resolution=(800, 600), backgroundcolor=:white)
+    fig = Figure(size=(800, 600))
 
     # Add an axis with labels
     ax = Axis3(fig[1, 1],
@@ -21,30 +25,48 @@ function generate_surface_plot(output_path::String)
         ylabel="Y Axis",
         zlabel="Z Axis",
         title="3D Surface Plot: sinc(r) × cos(x) × sin(y)",
-        titlesize=20,
-        elevation=0.3,
-        azimuth=2.5
+        titlesize=20
     )
 
     # Create the surface plot with color mapping
     surface!(ax, xs, ys, zs,
-        colormap=:viridis,
-        shading=true
+        colormap=:viridis
     )
 
     # Add a colorbar
     Colorbar(fig[1, 2], limits=extrema(zs), colormap=:viridis, label="Height")
 
-    # Save the figure
-    save(output_path, fig)
+    # Export as standalone HTML with all dependencies inlined
+    open(output_path, "w") do io
+        println(io, """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>3D Surface Plot</title>
+        </head>
+        <body style="margin: 0; padding: 0;">
+        """)
 
-    println("Plot saved successfully to: $output_path")
+        # Create exportable page
+        page = Bonito.Page(exportable=true, offline=true)
+
+        # Show the figure
+        show(io, MIME"text/html"(), page, fig)
+
+        println(io, """
+        </body>
+        </html>
+        """)
+    end
+
+    println("Interactive plot saved successfully to: $output_path")
     return output_path
 end
 
 """
 Simple function to demonstrate parametric plotting.
-Creates a 2D line plot with multiple series.
+Creates a 2D line plot with multiple series as an interactive HTML file.
 """
 function generate_line_plot(output_path::String)
     # Create data
@@ -54,7 +76,7 @@ function generate_line_plot(output_path::String)
     y3 = sin.(x) .* cos.(x)
 
     # Create figure
-    fig = Figure(resolution=(800, 600), backgroundcolor=:white)
+    fig = Figure(size=(800, 600))
 
     # Add axis
     ax = Axis(fig[1, 1],
@@ -72,15 +94,36 @@ function generate_line_plot(output_path::String)
     # Add legend
     axislegend(ax, position=:rt)
 
-    # Save
-    save(output_path, fig)
+    # Export as standalone HTML with all dependencies inlined
+    open(output_path, "w") do io
+        println(io, """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>2D Line Plot</title>
+        </head>
+        <body style="margin: 0; padding: 0;">
+        """)
 
-    println("Plot saved successfully to: $output_path")
+        # Create exportable page
+        page = Bonito.Page(exportable=true, offline=true)
+
+        # Show the figure
+        show(io, MIME"text/html"(), page, fig)
+
+        println(io, """
+        </body>
+        </html>
+        """)
+    end
+
+    println("Interactive plot saved successfully to: $output_path")
     return output_path
 end
 
 # If running directly (not through juliacall)
 if abspath(PROGRAM_FILE) == @__FILE__
-    output = joinpath(@__DIR__, "..", "outputs", "test_plot.png")
+    output = joinpath(@__DIR__, "..", "outputs", "test_plot.html")
     generate_surface_plot(output)
 end

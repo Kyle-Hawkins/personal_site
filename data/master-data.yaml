@@ -1,0 +1,677 @@
+# Master Resume Data
+# Comprehensive source of all resume content
+# Use tags to filter content for different resume types: research, software, data-science, industry
+
+personal:
+  name: Kyle Hawkins
+  taglines:
+    default: "Computational Physicist | Mathematical Optimization & Scientific Software"
+    research: "Computational Physicist | Mathematical Optimization | Systems Biology"
+    software: "Physics Ph.D. | Scientific Software Developer | Optimization Algorithms"
+    data-science: "Physics Ph.D. | Data Scientist | Mathematical Modeling"
+    industry: "Physics Ph.D. | Problem Solver | Scientific Computing"
+  email: kyle.g.hawkins@protonmail.com
+  phone: "+1(513)-502-3611"
+  website: kylehawkins.dev
+  location: "Cincinnati, OH | Open to relocation (Ontario preferred)"
+  linkedin: kyleghawkins
+  github: Kyle-Hawkins
+  orcid: "0000-0002-7890-980X"
+
+education:
+  - degree: Ph.D. Physics
+    institution: Vanderbilt University
+    location: Nashville, TN, USA
+    dates: 2017-2025
+    confer_date: 2025-05-09
+    gpa: 3.629
+    credit_hours: 72
+    thesis: "The Development of a Robust Framework to Unlock the Full Potential of Explicit pH Modeling: An Exploration into Simulating pH within a Mathematical Optimization Framework"
+    tags: [research, software, data-science, industry]
+    relevant_coursework:
+      physics:
+        - course: "PHYS 8005 - Mathematical Methods for Physicists"
+          grade: A
+          description: "Linear spaces and operators; matrix algebra; differential equations; Green's function; and complex analysis. May include variational calculus; perturbation methods; group theory."
+          skills: [Linear Algebra, Differential Equations, Complex Analysis, Perturbation Methods, Green's Functions]
+        - course: "PHYS 8010 - Particle/Continuum Mechanics"
+          grade: A-
+          description: "Least action principle, Lagrange formalism, conservation laws, two-body problem, small-amplitude vibrations, non-inertial reference frames, canonical formalism, rigid body motion, continuous media, and field theory. Includes programming on scientific work stations."
+          skills: [Lagrangian Mechanics, Hamiltonian Mechanics, Scientific Programming, Mathematical Modeling, Field Theory]
+        - course: "PHYS 8030 - Quantum Mechanics"
+          grade: A
+          description: "Underlying assumptions. Schrodinger equation: interpretation, discrete and continuous basis, change of basis. One-dimensional examples: square potential, harmonic oscillator. Uncertainty relations, symmetries and their implications, angular momentum, hydrogen atom, spin, systems with N-degrees of freedom; time independent perturbation theory, Fermi's golden rule."
+          skills: [Quantum Theory, Perturbation Theory, Mathematical Physics, Symmetry Analysis]
+        - course: "PHYS 8020 - Advanced Electrodynamics"
+          grade: A-
+          description: "Electrostatics, potentials, boundary value problems, multipole moments, polarization, magnetostatics, Maxwell's equations, electromagnetic wave propagation, dissipative and conductive media."
+          skills: [Electromagnetic Theory, Boundary Value Problems, PDEs, Maxwell's Equations]
+        - course: "PHYS 8040 - Statistical Mechanics"
+          grade: A
+          description: "Phase space, entropy and reversibility; ensemble theory; Fermi and Bose Statistics; systems of interacting particles; equation of state, critical phenomena, and phase transitions; pairing and superfluidity."
+          skills: [Statistical Analysis, Thermodynamics, Phase Transitions, Ensemble Theory]
+        - course: "PHYS 8158 - Photons/Atoms/Molecules/Solids"
+          grade: A-
+          description: "Macroscopic optical properties of solids. Lorentz model of optical excitation, radiative and non-radiative relaxation. Coherence and dephasing in two-level systems. Interband transitions and luminescence. Optical properties of quantum-confined systems. Excitons, phonons, plasmons, and polaritons. Lasers, Raman and Brillouin scattering, nonlinear optical phenomenology."
+          skills: [Spectroscopy, Optical Physics, Solid State Physics, Nonlinear Optics]
+      systems_biology:
+        - course: "PHYS 8105 - Special Topics: Instrumentation for Automated Biology"
+          grade: A
+          description: "Current topics in experimental physics relevant to research areas in the department, such as biological, condensed-matter, elementary-particle, nuclear, and optical physics, astronomy, astrophysics and cosmology."
+          skills: [Laboratory Instrumentation, Experimental Design, Automation, Biophysics]
+        - course: "PHYS 8122 - Physics of Living Systems"
+          grade: A-
+          description: "Physical principles applied to biological phenomena. Development of physical models of biological systems on scales ranging from molecules to organisms. Biological applications of mechanics, thermodynamics, and dynamical systems."
+          skills: [Mathematical Modeling, Biophysics, Dynamical Systems, Biological Systems]
+        - course: "PHYS 8126 - Theoretical Systems Biology"
+          grade: A+
+          description: "Introduction to systems biology from the perspective of the emergence of complexity in toy models. Simple biological subsystems, their reductionist and equivalent models, and measurements required to specify model architecture and parameters. Multiple interconnected organs-on-chips as dynamic biological systems that can model organismal biology."
+          skills: [Systems Biology, Model Development, Complexity Theory, Organ-on-Chip Systems]
+        - course: "PHYS 8124 - Physics Measurement in Biological Systems"
+          grade: A+
+          description: "A survey of the state of the art in quantitative physical measurement techniques applied to cellular or molecular physiology. Topics include the basis for generation, measurement, and control of the transmembrane potential; electrochemical instrumentation; optical spectroscopy and imaging; X-ray diffraction for determination of macromolecular structure; magnetic resonance spectroscopy and imaging."
+          skills: [Spectroscopy, Imaging, Electrochemistry, X-ray Diffraction, MRI/NMR]
+      bioinformatics:
+        - course: "BMIF 6310 - Foundations of Bioinformatics"
+          grade: A-
+          description: "Survey course introducing experimental context and implementation of key algorithms in bioinformatics. Topics include basic biochemistry and molecular biology, algorithms for matching and aligning biological sequences, high-throughput DNA sequencing, genome assembly, gene annotation, proteomic mass spectrometry, protein structure inference and prediction, transcriptional microarrays, genome-wide association studies, and biological networks including genetic regulatory networks and gene ontologies."
+          skills: [Sequence Alignment, Genomics, Proteomics, Network Analysis, GWAS, Algorithm Implementation]
+        - course: "BMIF 6315 - Methodological Foundations of BMIF"
+          grade: B+
+          description: "Foundational concepts in machine learning for biomedical informatics. Topics include probabilistic reasoning, Bayesian statistics, statistical foundations, Python programming for data science, deep learning theory, and challenges of high-dimensional data including the curse of dimensionality."
+          skills: [Machine Learning, Bayesian Statistics, Python, Deep Learning, High-Dimensional Data Analysis]
+        - course: "BMIF 6322 - Scientific Communication"
+          grade: A-
+          description: "Enhances students' skills in written and oral scientific communication. Covers categories of scientific writing, the peer review process, and ethical issues in research communication. Provides hands-on experience in writing papers, abstracts, and grant proposals; critiquing and copy editing; and preparing and giving presentations for scientific meetings."
+          skills: [Technical Writing, Presentation Skills, Grant Writing, Peer Review, Scientific Communication]
+      mathematics:
+        - course: "MATH 6630 - Nonlinear Optimization"
+          grade: C+
+          description: "Mathematical modeling of optimization problems. Theory of unconstrained and constrained optimization, including convexity and the Karush-Kuhn-Tucker conditions. Derivative- and nonderivative-based methods."
+          skills: [Mathematical Optimization, Convex Optimization, KKT Conditions, Numerical Methods]
+        - course: "MATH 6710 - Graph Theory"
+          grade: B-
+          description: "The mathematical theory of networks. Traversing graphs using paths, cycles, and trails. Matchings and other graph factors. Coloring of vertices and edges. Connectivity and its relation to paths and flows. Embeddings of graphs in surfaces, especially the plane."
+          skills: [Graph Theory, Network Analysis, Combinatorics, Algorithm Design]
+      other:
+        - course: "BCHM-GS 8336 - Biochemical Molecular Toxicology"
+          grade: B
+          description: "Chemical and biological aspects of toxicology and carcinogenesis, including basic principles and mechanisms, metabolism and enzymology, cellular biology, chemistry of reactive intermediates, tissue-specific toxicity, and a survey of several classes of environmentally important compounds and drugs."
+          skills: [Biochemistry, Toxicology, Metabolism, Cellular Biology, Pharmacology]
+        - course: "PHYS 8100 - Selected Topics: Physics of Machine Learning"
+          grade: Audit
+          description: "Survey course covering different techniques for machine learning, with emphasis on applications in physics and scientific computing."
+          skills: [Machine Learning, Scientific Computing, Neural Networks, Data Analysis]
+        - course: "RCRG 6303 - Responsible Conduct of Research"
+          grade: P
+          description: "Lectures and small group discussions about responsible conduct of research including individual and group responsibilities, recording and use of data, intellectual property and technology transfer, ethical questions in and about research, societal responsibility of researchers, and Federal and institutional guidelines."
+          skills: [Research Ethics, Data Management, Intellectual Property, Regulatory Compliance]
+
+  - degree: B.Sc. Physics and Mathematics
+    institution: Centre College
+    location: Danville, KY, USA
+    dates: 2013-2017
+    confer_date: 2017-05-21
+    gpa: 3.766
+    honors: Magna Cum Laude
+    tags: [research, software, data-science, industry]
+    relevant_coursework:
+      physics:
+        - course: "PHY 210 - General Physics I"
+          grade: A-
+          skills: [Classical Mechanics, Thermodynamics, Laboratory Skills]
+        - course: "PHY 220 - General Physics II"
+          grade: A
+          skills: [Electromagnetism, Laboratory Skills]
+        - course: "PHY 230 - General Physics III"
+          grade: A
+          skills: [Electromagnetism, Modern Physics, Laboratory Skills]
+        - course: "PHY 300 - Intro to Electronics"
+          grade: A
+          skills: [Circuit Design, Electronic Instrumentation, Laboratory Skills]
+        - course: "PHY 310 - Modern Physics I"
+          grade: B
+          skills: [Quantum Mechanics, Special Relativity, Atomic Physics]
+        - course: "PHY 320 - Modern Physics II"
+          grade: B+
+          skills: [Nuclear Physics, Particle Physics, Condensed Matter]
+        - course: "PHY 340 - Advanced Mechanics"
+          grade: A
+          skills: [Lagrangian Mechanics, Hamiltonian Mechanics, Analytical Methods]
+        - course: "PHY 350 - Advanced Electricity & Magnetism"
+          grade: A
+          skills: [Electromagnetic Theory, Maxwell's Equations, Vector Calculus]
+        - course: "PHY 370 - Thermal Physics"
+          grade: A-
+          skills: [Thermodynamics, Statistical Mechanics, Entropy]
+        - course: "PHY 380 - Optics"
+          grade: A-
+          skills: [Wave Optics, Interference, Diffraction, Polarization]
+        - course: "PHY 399 - Introductory Quantum Mechanics"
+          grade: A
+          skills: [Quantum Theory, Wave Functions, Schrödinger Equation]
+        - course: "PHY 402 - Research Participation: Chaos and Nonlinear Dynamics"
+          grade: A
+          skills: [Nonlinear Dynamics, Chaos Theory, Research Methods, Data Analysis]
+      mathematics:
+        - course: "MAT 170 - Calculus I"
+          grade: AP
+          skills: [Differential Calculus, Limits, Derivatives]
+        - course: "MAT 171 - Calculus II"
+          grade: B
+          skills: [Integral Calculus, Integration Techniques, Series]
+        - course: "MAT 230 - Calculus III"
+          grade: A
+          skills: [Multivariable Calculus, Vector Calculus, Multiple Integrals]
+        - course: "MAT 240 - Linear Algebra"
+          grade: A-
+          skills: [Linear Algebra, Matrix Methods, Eigenvalues, Vector Spaces]
+        - course: "MAT 300 - Foundations of Mathematics"
+          grade: A
+          skills: [Proof Writing, Mathematical Logic, Set Theory]
+        - course: "MAT 310 - Probability Theory"
+          grade: A
+          skills: [Probability Theory, Random Variables, Distributions]
+        - course: "MAT 311 - Mathematical Statistics"
+          grade: B
+          skills: [Statistical Inference, Hypothesis Testing, Regression]
+        - course: "MAT 340 - Complex Variables"
+          grade: A
+          skills: [Complex Analysis, Contour Integration, Residue Theory]
+        - course: "MAT 360 - Differential Equations"
+          grade: A
+          skills: [ODEs, Analytical Methods, Initial Value Problems]
+        - course: "MAT 370 - Numerical Methods"
+          grade: A-
+          skills: [Numerical Analysis, Algorithm Implementation, Root Finding, Interpolation]
+        - course: "MAT 380 - Real Analysis"
+          grade: A
+          skills: [Real Analysis, Mathematical Rigor, Proofs, Convergence]
+        - course: "MAT 420 - Putnam Seminar"
+          grade: A
+          skills: [Problem Solving, Mathematical Competition, Creative Thinking]
+      computer_science:
+        - course: "CSC 117 - Intro to Computer Science"
+          grade: A
+          skills: [Programming, Problem Solving, Algorithms, Data Structures]
+      natural_sciences:
+        - course: "CHE 131 - General Chemistry I"
+          grade: A-
+          skills: [Chemistry, Laboratory Techniques, Stoichiometry]
+        - course: "NSC 250 - Physical Science of Volcanoes"
+          grade: A-
+          skills: [Geology, Earth Science, Scientific Reasoning]
+        - course: "PSY 110 - Intro to Psychology"
+          grade: A-
+          skills: [Psychology, Human Behavior, Cognitive Science]
+        - course: "PSY 295 - Physiological Psychology"
+          grade: P
+          skills: [Neuroscience, Neuroanatomy, Brain-Behavior Relationships]
+      humanities:
+        - course: "GER 110 - German Culture and Language I"
+          grade: A
+          skills: [German Language, Cultural Studies, Foreign Language]
+        - course: "GER 120 - German Culture and Language II"
+          grade: A
+          skills: [German Language, Cultural Studies, Foreign Language]
+        - course: "HUM 110 - Intro to Humanities I"
+          grade: A-
+          skills: [Critical Thinking, Cultural Analysis, Interdisciplinary Studies]
+        - course: "HUM 120 - Intro to Humanities II"
+          grade: B+
+          skills: [Critical Thinking, Cultural Analysis, Interdisciplinary Studies]
+        - course: "PHI 140 - Intro to Ethical Thinking"
+          grade: B+
+          skills: [Ethical Reasoning, Critical Thinking, Argumentation]
+        - course: "HIS 110 - Development of Modern World I"
+          grade: A-
+          skills: [Historical Analysis, Global Perspectives, Critical Thinking]
+        - course: "REL 150 - Western Religious Traditions"
+          grade: A-
+          skills: [Religious Studies, Cultural Analysis, Comparative Analysis]
+        - course: "ECO 110 - Intro to Economics"
+          grade: A
+          skills: [Economics, Microeconomics, Macroeconomics, Quantitative Reasoning]
+      other:
+        - course: "FYS 189 - Powering the Planet"
+          grade: A
+          skills: [Energy Science, Sustainability, Scientific Reasoning]
+        - course: "MUS 158 - First-Year Harpsichord Lessons"
+          grade: A
+          skills: [Music Performance, Harpsichord, Fine Motor Skills]
+
+research_experience:
+  - title: Graduate Research Assistant
+    institution: Vanderbilt University
+    location: Nashville, TN
+    dates: 2017-2025
+    projects:
+      - name: Explicit pH Models
+        dates: 2024-2025
+        description: "Development of a Julia-based explicit pH calculation within a mathematical optimization framework. Design considerations for automation, relational database representation compatibility, DFBA model embedding, and integration into a bioreactor digital twin."
+        tags: [research, software, data-science]
+        bullets:
+          research:
+            - "Developed Julia-based framework for explicit pH modeling, enabling integration with bioreactor digital twins"
+            - "Designed system architecture for relational database compatibility and DFBA model embedding"
+          software:
+            - "Built mathematical optimization pipelines using JuMP and IPOPT for metabolic simulations"
+            - "Designed PostgreSQL schema for storing and querying metabolic model parameters"
+            - "Created automation pipeline for bioreactor digital twin integration"
+          data-science:
+            - "Developed optimization algorithms for explicit pH simulation in biological systems"
+            - "Built data pipelines connecting metabolic models to relational databases"
+
+      - name: Yeast Metabolism
+        dates: 2020-2023
+        description: "Investigation of various metabolic models for predicting, controlling, and estimating Saccharomyces cerevisiae metabolic state. Exploration of various embeddings of DFBA, PBE, and pH models in Julia, Python, and MATLAB."
+        tags: [research, data-science]
+        bullets:
+          research:
+            - "Implemented DFBA metabolic models in Julia, Python, and MATLAB for yeast fermentation prediction"
+            - "Developed model predictive control strategies for metabolic systems"
+          software:
+            - "Implemented cross-language metabolic modeling framework (Julia, Python, MATLAB)"
+            - "Built simulation pipelines for dynamic flux balance analysis"
+          data-science:
+            - "Built predictive models for yeast metabolic state estimation"
+            - "Implemented DFBA, PBE, and pH models for fermentation optimization"
+
+      - name: iPSC Secretomics
+        dates: 2018-2019
+        description: "Initial Ph.D. project focused on correlating iPSC secretomics to multiomic state. Sought to utilize DFBA and secretome-transcriptome correlation models to optimize iPSC to dopaminergic neuron differentiation protocols."
+        tags: [research, data-science]
+        bullets:
+          research:
+            - "Developed secretome-transcriptome correlation models for iPSC differentiation"
+            - "Presented findings at Gordon Research Conferences (2018, 2019)"
+          data-science:
+            - "Built statistical models correlating secretomics to transcriptomic state"
+            - "Developed data-driven approach to optimize cell differentiation protocols"
+
+      - name: Fruit Fly Epithelium
+        dates: 2017
+        description: "Performed laser ablations to assess tensions present within Drosophila melanogaster pupae epithelium. Confocal imaging with cell wall localized GFP utilized to measure epithelial deformation mechanics."
+        tags: [research]
+        bullets:
+          - "Performed laser ablations to assess epithelial tensions"
+          - "Utilized confocal imaging with GFP to measure deformation mechanics"
+
+  - title: Undergraduate Researcher
+    institution: Centre College
+    location: Danville, KY
+    dates: 2016-2017
+    projects:
+      - name: Taylor-Couette Cells
+        dates: 2017
+        description: "Probed stratorotational instabilities of bilayer, density-graded Taylor-Couette cell to model accretion disks. Rheoscopic fluid used to measure Reynolds numbers associated with turbulent flow onset for different density gradients."
+        tags: [research]
+        bullets:
+          - "Modeled accretion disk dynamics using Taylor-Couette cells"
+          - "Measured Reynolds numbers for turbulent flow onset"
+
+      - name: Photographic Holograms
+        dates: 2016
+        description: "Production of 2D holograms using photographic film. Designed hologram patterns in MATLAB, photographed printed patterns, and processed final holograms."
+        tags: [research]
+        bullets:
+          - "Designed hologram patterns using MATLAB"
+          - "Produced 2D holograms using photographic film techniques"
+
+teaching_experience:
+  - title: Teaching Assistant
+    institution: Vanderbilt University
+    location: Nashville, TN
+    dates: "2017-2018; 2021"
+    course: Undergraduate Electromagnetism Lab
+    bullets:
+      - "Taught undergraduate electromagnetism lab sections"
+      - "Wrote beginning of lab lessons and prepared setups"
+      - "Aided students with lab completion and understanding"
+    tags: [research]
+
+volunteer:
+  - title: Volunteer Developer
+    organization: Civic Tech WR
+    location: Waterloo Region, ON
+    dates: July 2025-present
+    url: https://civictechwr.org/
+    description: "Civic Tech WR is a group of volunteers working to develop websites and apps to serve the Waterloo region community."
+    project: One Million Neighbours Project
+    project_url: https://onemillionneighbours.ca/
+    bullets:
+      - "Contributing to the One Million Neighbours project predicting KW area needs"
+      - "Developing web applications for community service"
+    tags: [software, industry]
+
+  - title: Festival Setup Volunteer
+    organization: Guelph Fringe Festival
+    location: Guelph, ON
+    dates: August 2025
+    description: "Guelph Fringe Festival is an annual, locally-run performative arts festival."
+    bullets:
+      - "Assisted with setting up performance venues"
+    tags: []
+
+skills:
+  programming_languages:
+    - name: Julia
+      proficiency: expert
+      tags: [research, software, data-science]
+    - name: Python
+      proficiency: expert
+      tags: [research, software, data-science, industry]
+    - name: MATLAB
+      proficiency: expert
+      tags: [research, data-science]
+    - name: SQL
+      proficiency: intermediate
+      tags: [software, data-science, industry]
+    - name: C++
+      proficiency: intermediate
+      tags: [software]
+    - name: LaTeX
+      proficiency: expert
+      tags: [research]
+
+  databases:
+    - name: PostgreSQL
+      context: "Development experience"
+      tags: [software, data-science]
+    - name: Neo4j
+      context: "Development experience"
+      tags: [software, data-science]
+    - name: PubChem
+      context: "Querying"
+      tags: [research, data-science]
+    - name: ChEBI
+      context: "Querying"
+      tags: [research, data-science]
+    - name: MetaNetX
+      context: "Querying"
+      tags: [research, data-science]
+
+  optimization_solvers:
+    - name: IPOPT
+      url: https://coin-or.github.io/Ipopt/
+      tags: [research, software, data-science]
+    - name: Coin-HSL
+      url: https://licences.stfc.ac.uk/product/coin-hsl
+      tags: [research, software]
+    - name: Gurobi
+      url: https://www.gurobi.com/
+      tags: [research, software, data-science]
+
+  julia_packages:
+    - name: JuMP
+      url: https://jump.dev/
+      description: "Mathematical optimization"
+      tags: [research, software, data-science]
+    - name: DataFrames
+      url: https://dataframes.juliadata.org/stable/
+      tags: [data-science]
+    - name: Symbolics
+      url: https://docs.sciml.ai/Symbolics/stable/
+      tags: [research, software]
+    - name: CairoMakie
+      url: https://docs.makie.org/v0.22/
+      description: "Data visualization"
+      tags: [research, data-science]
+    - name: COBREXA
+      url: https://lcsb-biocore.github.io/COBREXA.jl/stable/
+      description: "Constraint-based metabolic modeling"
+      tags: [research, data-science]
+
+  python_packages:
+    - name: GEKKO
+      url: https://gekko.readthedocs.io/en/latest/
+      description: "Dynamic optimization"
+      tags: [research, software, data-science]
+    - name: Pandas
+      url: https://pandas.pydata.org/
+      tags: [data-science, software]
+    - name: Sympy
+      url: https://www.sympy.org/en/index.html
+      description: "Symbolic mathematics"
+      tags: [research, software]
+    - name: Plotly
+      url: https://plotly.com/python/
+      description: "Interactive visualization"
+      tags: [data-science]
+    - name: Cobrapy
+      url: https://cobrapy-cdiener.readthedocs.io/en/latest/getting_started.html
+      description: "Constraint-based metabolic modeling"
+      tags: [research, data-science]
+
+  numerical_methods:
+    - "Standard techniques for ODEs and PDEs"
+    - "Mathematical optimization"
+    - "Traditional machine learning"
+    - "Linear/non-linear regression"
+    - "Finite element methods"
+
+  tools:
+    - name: Git
+      tags: [software, research, data-science, industry]
+    - name: Linux
+      tags: [software, research, data-science]
+    - name: High-Performance Computing
+      tags: [research, software, data-science]
+    - name: Docker
+      tags: [software, industry]
+
+  domains:
+    - name: Computational Chemistry
+      tags: [research, data-science]
+    - name: Molecular Dynamics
+      tags: [research]
+    - name: Mathematical Optimization
+      tags: [research, software, data-science]
+    - name: Statistical Analysis
+      tags: [research, data-science]
+    - name: Data Visualization
+      tags: [data-science, research]
+    - name: Machine Learning
+      tags: [data-science, software]
+    - name: Systems Biology
+      tags: [research, data-science]
+    - name: Metabolic Modeling
+      tags: [research, data-science]
+
+  soft_skills:
+    - Problem Solving
+    - Analytical Thinking
+    - Research & Development
+    - Technical Writing
+    - Collaboration
+    - Attention to Detail
+    - Scientific Communication
+    - Mentoring
+
+languages:
+  - name: English
+    proficiency: fluent
+  - name: French
+    proficiency: learning
+  - name: Haitian Creole
+    proficiency: learning
+
+publications:
+  journal_articles:
+    - key: Hawkins2025
+      title: "Explicit pH Calculation within a Mathematical Optimization Environment"
+      authors: ["Hawkins, Kyle G.", "Wikswo, John P."]
+      journal: unpublished
+      year: 2025
+      note: "In preparation. Intended for submission to Nature Communications"
+      tags: [research]
+
+    - key: Hawkins2020
+      title: "The Microbiome and the Gut-Liver-Brain Axis for Central Nervous System Clinical Pharmacology: Challenges in Specifying and Integrating In Vitro and In Silico Models"
+      authors: ["Hawkins, Kyle G.", "Casolaro, Caleb", "Brown, Jacquelyn A.", "Edwards, David A.", "Wikswo, John P."]
+      journal: "Clinical Pharmacology & Therapeutics"
+      volume: 108
+      number: 5
+      pages: "929-948"
+      year: 2020
+      doi: "10.1002/cpt.1870"
+      url: https://onlinelibrary.wiley.com/doi/10.1002/cpt.1870
+      tags: [research]
+
+  patents:
+    - key: VariableVolume2024
+      title: "Variable-volume chemostat and applications thereof"
+      authors: ["Wikswo, John P.", "Reiserer, Ron S.", "Hawkins, Kyle"]
+      number: "U.S. Patent No. 20240182843A1"
+      year: 2024
+      url: https://patents.google.com/patent/US20240182843A1
+      tags: [research, industry]
+
+    - key: Microdialysis2019
+      title: "System and method for microdialysis imaging and regional fluidic delivery and control and applications of same"
+      authors: ["Wikswo, John P.", "Reiserer, Ron S.", "Hawkins, Kyle"]
+      number: "U.S. Patent No. 20190249128A"
+      year: 2019
+      url: https://patents.google.com/patent/US20190249128A1
+      tags: [research, industry]
+
+presentations:
+  talks:
+    - title: "A Data-Driven Approach to Infer Transcriptomic State from Secretomic Measurements"
+      venue: Drug Safety Gordon Research Seminar at Stonehill College
+      location: Andover, NH, USA
+      date: August 2019
+      tags: [research]
+
+    - title: "Optimizing Midbrain Dopaminergic Neuron Differentiation Protocols with Nonlinear Model Predictive Control"
+      venue: Invited Talk at Centre College
+      location: Danville, KY, USA
+      date: October 2018
+      tags: [research]
+
+    - title: "Optimization of Neuronal Differentiation Protocols with Nonlinear Model Predictive Control and Secretome-Based Moving Horizon Estimation"
+      venue: Drug Safety Gordon Research Seminar at Stonehill College
+      location: Easton, MA, USA
+      date: June 2018
+      tags: [research]
+
+    - title: "Concentric Rotating Cylinders as a Model of Protoplanetary Disk Dynamics"
+      venue: RICE Symposium at Centre College
+      location: Danville, KY, USA
+      date: April 2017
+      tags: [research]
+
+    - title: "Computer Generated Hologram Production"
+      venue: RICE Symposium at Centre College
+      location: Danville, KY, USA
+      date: April 2017
+      tags: [research]
+
+  posters:
+    - title: "Metabolic Modeling of Saccharomyces cerevisiae with DFBA-DAE Simulation"
+      venue: Wikswo Lab Tour for GSK
+      location: Nashville, TN, USA
+      date: November 2022
+      tags: [research]
+
+    - title: "A Data-Driven Approach to Infer Transcriptomic State from Secretomic Measurements"
+      venue: Cellular and Molecular Mechanisms of Toxicity Gordon Research Conference
+      location: Andover, NH, USA
+      date: August 2019
+      tags: [research]
+
+    - title: "Optimization of Neuronal Differentiation Protocols with Nonlinear Model Predictive Control and Secretome-Based Moving Horizon Estimation"
+      venue: Drug Safety Gordon Research Conference
+      location: Easton, MA, USA
+      date: June 2018
+      tags: [research]
+
+awards:
+  grants:
+    - name: NIH TOX T32
+      dates: 2019-2021
+      description: "Training grant to promote research in toxicology"
+      tags: [research]
+
+    - name: NIH T15
+      dates: 2018-2019
+      description: "Training grant to promote interdisciplinary research in medical bioinformatics"
+      tags: [research]
+
+    - name: McMinn Award
+      dates: 2018-2020
+      institution: Vanderbilt University
+      description: "Award to promote research. Received three times to fund travel to the 2018 Drug Safety GRC, the 2018 GraphConnect, and the 2019 Cellular and Molecular Mechanisms of Toxicity GRC. Also utilized for the purchase of a Linux-OS work laptop."
+      tags: [research]
+
+    - name: GRC Scholarship
+      year: 2018
+      description: "Scholarship to fund travel to the 2018 Drug Safety Gordon Research Conference"
+      tags: [research]
+
+    - name: La Serena Scholarship
+      year: 2018
+      description: "Scholarship to fund travel to the La Serena School's Applied Tools for Data-Driven Science Workshop, a survey of machine learning techniques applied to astronomy and biology"
+      tags: [research, data-science]
+
+  honors:
+    - name: Phi Beta Kappa
+      year: 2017
+      description: "Honor Society promoting excellence in liberal arts and science"
+      tags: [research]
+
+    - name: Pi Mu Epsilon
+      year: 2017
+      description: "Mathematics Honor Society"
+      tags: [research]
+
+    - name: Sigma Pi Sigma
+      year: 2015
+      description: "Physics and Astronomy Honor Society"
+      tags: [research]
+
+projects:
+  - name: Explicit pH Optimization Framework
+    type: Research Project
+    dates: 2024-2025
+    description: "Mathematical optimization framework for simulating pH in biological systems"
+    bullets:
+      - "Built mathematical optimization framework for simulating pH in biological systems"
+      - "Designed for integration with bioreactor digital twins and relational databases"
+      - "Implemented using JuMP for modeling and IPOPT/Gurobi for solving"
+    technologies: [Julia, JuMP, IPOPT, Gurobi, PostgreSQL]
+    tags: [research, software, data-science]
+    url: null
+
+  - name: Metabolic Model Simulation Pipeline
+    type: Research Project
+    dates: 2020-2023
+    description: "Cross-language framework for dynamic flux balance analysis"
+    bullets:
+      - "Developed cross-language framework for dynamic flux balance analysis (DFBA)"
+      - "Built predictive models for yeast fermentation and metabolic state estimation"
+      - "Integrated with COBREXA and Cobrapy for constraint-based modeling"
+    technologies: [Julia, Python, MATLAB, COBREXA, Cobrapy]
+    tags: [research, software, data-science]
+    url: null
+
+  - name: One Million Neighbours
+    type: Volunteer/Open Source
+    dates: 2025-present
+    description: "Predicting Waterloo region community needs as population approaches one million"
+    bullets:
+      - "Contributing to open-source project predicting Waterloo region community needs"
+      - "Developing web applications for municipal planning and resource allocation"
+    technologies: []
+    tags: [software, industry]
+    url: https://onemillionneighbours.ca/
+
+  - name: Portfolio Website
+    type: Personal Project
+    dates: 2025
+    url: https://kylehawkins.dev
+    description: "Personal portfolio and blog"
+    bullets:
+      - "Built personal portfolio showcasing projects and publications"
+    technologies: []
+    tags: [software]

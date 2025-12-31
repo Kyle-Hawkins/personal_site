@@ -1,5 +1,4 @@
 [deps]
-GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
-
-[compat]
-GLMakie = "0.10"
+Bonito = "824d6782-a2ef-11e9-3a09-e5662e0c26f8"
+PlotlyJS = "f0f68f2c-4968-5e81-91da-67840de0976a"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"

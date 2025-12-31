@@ -1,12 +1,14 @@
 # Quick Setup Guide
 
-Follow these steps to get the GLMakie plot generator running:
+Follow these steps to get the WGLMakie interactive plot generator running:
 
 ## Prerequisites
 
 - Conda (Miniconda or Anaconda)
+- Julia (v1.10 or higher)
 - Node.js (v18 or higher) and npm
 - Git
+- Modern web browser with WebGL support (Chrome, Firefox, Safari, or Edge)
 
 ## Quick Start (Recommended)
 
@@ -39,11 +41,11 @@ conda env create -f environment.yml
 # Activate environment
 conda activate glmakie-demo
 
-# Install Julia packages
+# Install Julia packages (WGLMakie and Bonito)
 julia --project=julia-env -e 'using Pkg; Pkg.instantiate()'
 
-# Precompile GLMakie (takes 2-3 minutes on first run)
-julia --project=julia-env -e 'using GLMakie; println("GLMakie ready!")'
+# Precompile WGLMakie (takes 3-5 minutes on first run)
+julia --project=julia-env -e 'using WGLMakie, Bonito; println("WGLMakie ready!")'
 
 # Start the server (Option 1: using startup script)
 ./start_server.sh
@@ -53,7 +55,7 @@ julia --project=julia-env -e 'using GLMakie; println("GLMakie ready!")'
 # python main.py
 ```
 
-**Note:** The first time you load GLMakie, it needs to precompile which takes 2-3 minutes. Subsequent runs will be much faster.
+**Note:** The first time you load WGLMakie, it needs to precompile which takes 3-5 minutes. Subsequent runs will be much faster.
 
 Keep this terminal running. The backend should now be available at http://localhost:8000
 
@@ -84,7 +86,9 @@ Keep this terminal running. The frontend should now be available at http://local
 3. Select a plot type (Surface or Line)
 4. Click "Generate Plot"
 5. Wait a few seconds for the plot to generate
-6. The plot should appear on the page
+6. An interactive plot should appear in the viewer
+   - **3D Surface:** Click and drag to rotate, scroll to zoom
+   - **2D Line:** Click and drag to pan, scroll to zoom
 
 ## Quick Test Commands
 
@@ -95,7 +99,7 @@ curl http://localhost:8000
 
 Expected response:
 ```json
-{"status":"running","service":"GLMakie Plot Generator","julia_initialized":true}
+{"status":"running","service":"WGLMakie Plot Generator","julia_initialized":true}
 ```
 
 ### Test Plot Generation
@@ -110,16 +114,38 @@ curl -X POST http://localhost:8000/generate-plot \
 curl http://localhost:8000/plots
 ```
 
+## Interactive Features
+
+The application generates **interactive HTML plots** using WGLMakie and WebGL:
+
+### 3D Surface Plots
+- **Rotate:** Left-click and drag to rotate the plot in 3D space
+- **Zoom:** Scroll wheel to zoom in/out
+- **Pan:** Right-click and drag to pan the view
+- **Reset:** Double-click to reset the view to default
+
+### 2D Line Plots
+- **Pan:** Left-click and drag to pan the plot
+- **Zoom:** Scroll wheel to zoom in/out
+- **Reset:** Double-click to reset the view to default
+
+### Technical Details
+- Plots are exported as standalone HTML files (~500KB-2MB each)
+- All JavaScript dependencies are embedded (Three.js, WebGL helpers)
+- No Julia server needed after generation
+- Works offline once generated
+- Requires modern browser with WebGL 2.0 support
+
 ## Common Issues
 
-**Problem:** Backend says Julia not initialized or OpenSSL version conflict
+**Problem:** Backend says Julia not initialized
 ```bash
-# Solution 1: GLMakie takes 2-3 minutes to precompile on first run
+# Solution 1: WGLMakie takes 3-5 minutes to precompile on first run
 # Just wait patiently for it to finish
 
-# Solution 2: Manually precompile GLMakie before starting the backend
+# Solution 2: Manually precompile WGLMakie before starting the backend
 cd backend
-julia --project=julia-env -e 'using GLMakie; println("GLMakie loaded successfully")'
+julia --project=julia-env -e 'using WGLMakie, Bonito; println("WGLMakie loaded successfully")'
 
 # This can take several minutes on first run but subsequent runs will be fast
 ```
@@ -143,6 +169,25 @@ julia --project=julia-env -e 'using GLMakie; println("GLMakie loaded successfull
 - Check CORS is enabled in main.py
 - Check browser console for error messages
 
+**Problem:** Interactive plots not working or blank display
+```bash
+# Solution: This requires WebGL support in your browser
+# Check if your browser supports WebGL: https://get.webgl.org/
+
+# If WebGL is supported but plots still don't work:
+# 1. Try a different browser (Chrome/Firefox recommended)
+# 2. Update your graphics drivers
+# 3. Disable browser extensions that might block WebGL
+# 4. Check browser console for JavaScript errors
+```
+
+**Problem:** Plot files are large (1-2MB)
+```bash
+# This is expected - WGLMakie HTML files include all JavaScript dependencies
+# The files are self-contained and fully interactive
+# They include Three.js and WebGL rendering code (~500KB-2MB)
+```
+
 ## Stopping the Servers
 
 **Option 1: Use the stop script (recommended)**
@@ -164,8 +209,24 @@ cd src/project/makie_plot_claude/backend
 
 Once everything is working:
 1. Explore the code in `backend/julia-src/generate_plot.jl`
-2. Modify the plot functions to create your own visualizations
+2. Modify the plot functions to create your own interactive visualizations
 3. Add new plot types following the README instructions
 4. Customize the frontend styling in `frontend/src/App.css`
+5. Experiment with WGLMakie's interactive features and plot customizations
+
+## What's New in v1.2
+
+This version uses **WGLMakie** instead of GLMakie for true web-based interactivity:
+
+- ✅ **Interactive HTML plots** - Rotate, zoom, and pan directly in the browser
+- ✅ **WebGL rendering** - Hardware-accelerated 3D graphics
+- ✅ **Standalone exports** - HTML files work without a running Julia server
+- ✅ **Offline support** - All dependencies embedded in the HTML file
+- ✅ **Modern web deployment** - Easy to share and embed
+
+**Previous version (v1.1):** Generated static PNG images
+**Current version (v1.2):** Generates interactive HTML visualizations
+
+For detailed migration information, see `.claude/FIXES_AND_CHANGES.md`.
 
 Happy plotting!

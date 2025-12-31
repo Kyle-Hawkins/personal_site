@@ -92,7 +92,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>GLMakie Plot Generator</h1>
+        <h1>WGLMakie Interactive Plot Generator</h1>
         <p>Julia + FastAPI + React Pipeline Demo</p>
       </header>
 
@@ -139,8 +139,18 @@ function App() {
         {/* Plot Display */}
         {plotUrl && (
           <div className="plot-container">
-            <h2>Generated Plot</h2>
-            <img src={plotUrl} alt="Generated plot" className="plot-image" />
+            <h2>Generated Plot (Interactive)</h2>
+            <iframe
+              src={plotUrl}
+              title="Generated plot"
+              className="plot-iframe"
+              style={{
+                width: '100%',
+                height: '700px',
+                border: '1px solid #ddd',
+                borderRadius: '8px'
+              }}
+            />
           </div>
         )}
 
@@ -156,9 +166,15 @@ function App() {
                     onClick={() => loadPlot(filename)}
                     style={{ cursor: 'pointer' }}
                   >
-                    <img
+                    <iframe
                       src={`${API_BASE_URL}/plots/${filename}`}
-                      alt={filename}
+                      title={filename}
+                      style={{
+                        width: '100%',
+                        height: '200px',
+                        border: 'none',
+                        pointerEvents: 'none'
+                      }}
                     />
                   </div>
                   <div className="plot-item-footer">
