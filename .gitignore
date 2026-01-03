@@ -7,6 +7,17 @@ dist/
 # Generated files
 src-resume/data/resume.json
 
+# Julia
+**/Manifest.toml
+
+# Python
+**/__pycache__/
+*.pyc
+
+# Generated plot outputs
+**/outputs/*.html
+!**/outputs/.gitkeep
+
 # Editor files
 .DS_Store
 *.swp
