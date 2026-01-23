@@ -5,7 +5,12 @@ node_modules/
 dist/
 
 # Generated files
-src-resume/data/resume.json
+src/data/resume.json
+src/data/projects.json
+resumes/
+
+# Backend projects (development only)
+src/project/
 
 # Julia
 **/Manifest.toml
