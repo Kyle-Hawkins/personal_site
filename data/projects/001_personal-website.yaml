@@ -1,0 +1,266 @@
+id: "personal-website"
+title: "Building a Personal Website"
+summary: "A React-based personal site with notebook-style project pages"
+created: "03 January 2026"
+updated: "22 January 2026"
+keywords: ["React", "Vite", "YAML"]
+visible: true
+cells:
+  - type: "markdown"
+    content: |
+      # Building This Website
+
+      This site started as a simple resume page and evolved into a platform for documenting personal projects. It combines a dynamic resume system with notebook-style project documentation, all driven by YAML data files.
+
+      ## Tech Stack
+
+      - **React 18** - UI framework
+      - **Vite** - Build tool and dev server
+      - **React Router** - Client-side routing
+      - **YAML** - Data storage for resume and projects
+      - **KaTeX** - LaTeX math rendering
+      - **Mermaid** - Diagram rendering
+      - **react-syntax-highlighter** - Code block styling
+      - **react-markdown** - Markdown rendering with rehype/remark plugins
+
+      ## Key Features
+
+      ### Notebook-Style Project Pages
+
+      Each project page uses a cell-based layout inspired by Jupyter notebooks. Cells can be:
+      - **Markdown** - Rich text with LaTeX math support ($\LaTeX$)
+      - **Code** - Syntax-highlighted code blocks
+      - **YouTube** - Embedded videos
+      - **Image** - Images with captions
+      - **Mermaid** - Flowcharts, diagrams, and graphs
+
+      ### Dynamic Resume System
+
+      The resume is driven by a single YAML file (`data/resume.yaml`) containing:
+      - Education with detailed coursework
+      - Work experience
+      - Research experience with projects
+      - Skills (programming languages, tools, databases, etc.)
+      - Publications and patents
+      - Awards and honors
+      - Projects (with visibility toggles)
+
+      Features include:
+      - **Search filtering** - Search across all resume content
+      - **Highlight matching text** - Search terms are highlighted in results
+      - **Tag-based organization** - Content tagged for different resume versions (research, software, data-science, industry)
+
+      ### Modular Project Files
+
+      Projects are stored as individual YAML files in `data/projects/`, making them easy to edit independently. Each project can be toggled on/off using the `visible` field.
+
+  - type: "markdown"
+    content: |
+      ## Project File Structure
+
+      Here's the complete structure for a project file:
+
+  - type: "code"
+    language: "yaml"
+    content: |
+      # Example project file
+      id: "my-project"                    # URL-friendly identifier
+      title: "Project Title"              # Display title
+      summary: "Brief description"        # Shows on project listing
+      created: "03 January 2026"          # Creation date
+      updated: "22 January 2026"          # Last update date
+      keywords: ["Python", "React"]       # Technology tags
+      visible: true                       # Toggle visibility (true/false)
+      cells:
+        - type: "markdown"
+          content: |
+            # Project Details
+
+            Rich text with $$\LaTeX$$ math: $E = mc^2$
+
+        - type: "code"
+          language: "python"
+          content: |
+            def hello():
+                print("Hello, world!")
+
+        - type: "mermaid"
+          content: |
+            graph LR
+              A[Start] --> B[Process]
+              B --> C[End]
+
+        - type: "image"
+          src: "/path/to/image.png"
+          alt: "Description"
+          caption: "Optional caption"
+
+        - type: "youtube"
+          videoId: "dQw4w9WgXcQ"
+          title: "Video Title"
+
+  - type: "markdown"
+    content: |
+      ## Architecture
+
+      The site uses a build-time YAML-to-JSON conversion process, then React components consume the JSON at runtime.
+
+  - type: "mermaid"
+    content: |
+      graph TD
+        A[YAML Files] --> B[convert-yaml.js]
+        B --> C[JSON Data Files]
+        C --> D[React Components]
+        D --> E[Rendered Page]
+
+        style B fill:#e1f5ff
+        style C fill:#fff4e1
+
+  - type: "markdown"
+    content: |
+      ### Directory Structure
+
+      ```
+      /
+      ├── data/
+      │   ├── resume.yaml              # Master resume data
+      │   └── projects/                # Individual project files
+      │       ├── 001_project.yaml
+      │       └── 002_project.yaml
+      ├── src/
+      │   ├── data/                    # Generated JSON files
+      │   │   ├── resume.json
+      │   │   └── projects.json
+      │   ├── pages/                   # Page components
+      │   │   ├── Resume.jsx
+      │   │   ├── Projects.jsx
+      │   │   ├── ProjectDetail.jsx
+      │   │   └── About.jsx
+      │   ├── components/
+      │   │   ├── sections/            # Resume sections
+      │   │   └── cells/               # Project cell types
+      │   └── utils/
+      │       └── filterUtils.js       # Search/filter logic
+      ├── scripts/
+      │   └── convert-yaml.js          # YAML→JSON converter
+      └── dist/                        # Production build output
+      ```
+
+#  - type: "markdown"
+#    content: |
+#      ## How To Guides
+#
+#      ### Adding a New Project
+#
+#      1. Create a new YAML file in `data/projects/` (e.g., `004_my-project.yaml`)
+#      2. Use the project file structure template above
+#      3. Set `visible: true` to publish immediately, or `visible: false` to work on it privately
+#      4. Run `npm run dev` - the project will be automatically loaded
+#
+#      ### Updating the Resume
+#
+#      Edit `data/resume.yaml` directly:
+#      - Add work experience to the `work_experience:` section
+#      - Add research projects under `research_experience:`
+#      - Add skills to the `skills:` section
+#      - Tag content appropriately: `tags: [research, software, data-science, industry]`
+#
+#      ### Toggling Project Visibility
+#
+#      To hide a project without deleting it:
+#      ```yaml
+#      visible: false  # Project won't appear on site
+#      ```
+#
+#      To show a project:
+#      ```yaml
+#      visible: true   # Project will appear on site
+#      ```
+#
+#      This is useful for:
+#      - Working on projects privately before publishing
+#      - Temporarily hiding outdated projects
+#      - A/B testing different project presentations
+#
+#      ### Updating a Project
+#
+#      1. Edit the project's YAML file in `data/projects/`
+#      2. Update the `updated:` field to today's date
+#      3. Save - the dev server will hot-reload automatically
+#
+#  - type: "markdown"
+#    content: |
+#      ## Build & Deployment
+#
+#      ### Development
+#
+#      ```bash
+#      npm run dev          # Start dev server at localhost:3000
+#      ```
+#
+#      The dev server automatically:
+#      - Converts YAML to JSON (via predev script)
+#      - Hot-reloads on file changes
+#      - Serves the site locally
+#
+#      ### Production Build
+#
+#      ```bash
+#      npm run build        # Creates optimized build in dist/
+#      ```
+#
+#      The build process:
+#      1. Runs `convert-yaml.js` to generate JSON from YAML
+#      2. Compiles React components
+#      3. Bundles and minifies assets
+#      4. Outputs static files to `dist/` directory
+#
+#      ### Deployment
+#
+#      The `dist/` directory contains a static site that can be deployed to:
+#      - GitHub Pages
+#      - Netlify
+#      - Vercel
+#      - Any static hosting service
+#
+#      No server-side rendering or backend required!
+#
+#  - type: "markdown"
+#    content: |
+#      ## Design Decisions
+#
+#      ### Why YAML for Data?
+#
+#      - Human-readable and easy to edit
+#      - Supports multi-line strings (perfect for markdown content)
+#      - Schema-free flexibility
+#      - Git-friendly (easy to track changes)
+#
+#      ### Why Cell-Based Projects?
+#
+#      The notebook style allows mixing:
+#      - Explanatory text (markdown)
+#      - Working code examples
+#      - Visualizations (diagrams, images, videos)
+#
+#      This makes projects self-documenting and educational.
+#
+#      ### Why Build-Time Conversion?
+#
+#      Converting YAML to JSON at build time means:
+#      - Faster runtime performance (JSON parsing is faster)
+#      - Type checking opportunities
+#      - Validation before deployment
+#      - No runtime YAML parser needed (smaller bundle size)
+#
+#  - type: "markdown"
+#    content: |
+#      ## Future Enhancements
+#
+#      Possible improvements:
+#      - Add CMS integration for non-technical editing
+#      - Implement RSS feed for project updates
+#      - Add project categories/filtering on the projects page
+#      - Create PDF export for resume
+#      - Add dark mode toggle
+#      - Implement analytics to track popular projects

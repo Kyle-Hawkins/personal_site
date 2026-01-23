@@ -1,0 +1,13 @@
+id: "vegetable-caramelization"
+title: "Caramelization Reactions in Vegetables"
+summary: "Exploring the science of vegetable caramelization"
+created: "03 January 2026"
+updated: "03 January 2026"
+keywords: [Chemistry, Cooking]
+visible: false
+cells:
+  - type: "markdown"
+    content: |
+      # Caramelization Reactions in Vegetables
+
+      *Coming soon...*
