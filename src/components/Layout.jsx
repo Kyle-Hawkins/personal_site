@@ -13,7 +13,7 @@ function Layout({ children }) {
           <div className="nav-links">
             <Link to="/" className="nav-brand"><span className="initials-box">KH</span></Link>
             <Link to="/resume" className={location.pathname === '/resume' ? 'active' : ''}>Resume</Link>
-            <Link to="/projects" className={location.pathname.startsWith('/projects') ? 'active' : ''}>Projects</Link>
+            {/* <Link to="/projects" className={location.pathname.startsWith('/projects') ? 'active' : ''}>Projects</Link> */}
           </div>
         </div>
       </nav>
